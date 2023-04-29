@@ -44,16 +44,12 @@ HTTPGarageDoorAccessory.prototype = {
             res.on('data', chunk => { recv_data += chunk});
             res.on('end', () => {
                 // recv_data contains state info.... {"currentState":"Closed"}
-                let state = JSON.parse(recv_data).currentState;
+                let state = JSON.parse(recv_data)['1000'];
                 let newState = DoorState.STOPPED;
-                if (state == "Open") {
+                if (state == "0") {
                   newState = DoorState.OPEN;
-                } else if (state == "Opening") {
-                  newState = DoorState.OPENING;
-                } else if (state == "Closed") {
+                } else if (state == "1") {
                   newState = DoorState.CLOSED;
-                } else if (state == "Closing") {
-                  newState = DoorState.CLOSING;
                 }
                 
                 if (this.currentState != newState){
