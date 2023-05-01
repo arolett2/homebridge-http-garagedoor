@@ -63,11 +63,11 @@ HTTPGarageDoorAccessory.prototype = {
                         this.log(this.name + ' Initial Status is now Open');
                         this.targetState = DoorState.OPEN;
                         this.targetDoorState.updateValue(this.targetState);                   
-                    } else if(this.targetState == DoorState.OPEN && newState == DoorState.CLOSING) {
+                    } else if(this.targetState == DoorState.OPEN && newState == DoorState.CLOSED) {
                         this.log(this.name + ' was Open but now Closing');
                         this.targetState = DoorState.CLOSED;
                         this.targetDoorState.updateValue(this.targetState); 
-                    } else if(this.targetState == DoorState.CLOSED && newState == DoorState.OPENING) {
+                    } else if(this.targetState == DoorState.CLOSED && newState == DoorState.OPEN) {
                         this.log(this.name + ' was Closed but now Opening');
                         this.targetState = DoorState.OPEN;
                         this.targetDoorState.updateValue(this.targetState); 
